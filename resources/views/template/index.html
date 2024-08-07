@@ -9,10 +9,10 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>{{ config('app.name') }}</title>
+    <title>Store - Your Best Marketplace</title>
 
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-    <link href="{{ asset('style/main.css') }}" rel="stylesheet" />
+    <link href="style/main.css" rel="stylesheet" />
   </head>
 
   <body>
@@ -47,31 +47,16 @@
             <li class="nav-item">
               <a class="nav-link" href="#">Rewards</a>
             </li>
-            @guest
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('auth.register') }}">Sign Up</a>
+              <a class="nav-link" href="/register.html">Sign Up</a>
             </li>
             <li class="nav-item">
               <a
                 class="btn btn-success nav-link px-4 text-white"
-                href="{{ route('auth.login') }}"
+                href="/login.html"
                 >Sign In</a
               >
             </li>
-            @endguest
-            @auth
-            <li class="nav-item">
-              <a class="nav-link" href="">{{ auth()->user()->name }}</a>
-            </li>
-            
-            <li class="nav-item">
-              <a
-                class="btn btn-danger nav-link px-4 text-white"
-                href="{{ route('logout') }}"
-                >Logout</a
-              >
-            </li>
-            @endauth
           </ul>
         </div>
       </div>
@@ -446,34 +431,12 @@
     </footer>
 
     <!-- Bootstrap core JavaScript -->
-    <script src="{{ asset('vendor/jquery/jquery.slim.min.js') }}"></script>
-    <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="/vendor/jquery/jquery.slim.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
       AOS.init();
     </script>
-    <script src="{{ asset('script/navbar-scroll.js') }}"></script>
-    @yield('script')
-    
-<script>
-  @if(session()->has('successMessage'))
-  Vue.use(Toasted);
-
-  var register = new Vue({
-    el: "#register",
-    mounted() {
-      AOS.init();
-      this.$toasted.success(
-        "{{ session()->get('successMessage') }}",
-        {
-          position: "top-center",
-          className: "rounded",
-          duration: 1000,
-        }
-      );
-    }
-  });
-  @endif
-</script>
+    <script src="/script/navbar-scroll.js"></script>
   </body>
 </html>
